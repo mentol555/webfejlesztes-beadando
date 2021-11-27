@@ -1,0 +1,64 @@
+<div class="container">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Márka</th>
+            <th>Model</th>
+            <th>Évjárat</th>
+            <th>Rendszám</th>
+            <th>Művelet</th>
+        </tr>
+        <tr *ngFor="let car of cars">
+            <td>{{car?.id}}</td>
+            <td>{{car?.name}}</td>
+            <td>{{car?.color}}</td>
+            <td>{{car?.manYear}}</td>
+            <td>{{car?.nr}}</td>
+            <td>
+                <mat-icon id="modify" (click)="updateCar(car)">edit</mat-icon>
+                <mat-icon id="delete" (click)="deleteCar(car.id)">delete</mat-icon>
+            </td>
+        </tr>
+    </table>
+    <button mat-mini-fab [disabled]="showForm ? 'disabled': null" color="primary" id="add" (click)="addNew()">
+        <mat-icon>add</mat-icon>
+    </button>
+    <ng-container *ngIf="showForm">
+        <p class="showID" *ngIf="update">ID: {{actualCar.id}}</p>
+        <mat-form-field appearance="fill">
+            <mat-label>Márka</mat-label>
+            <mat-select [(value)]="newcar.name">
+              <mat-option *ngFor="let marka of carnames" [value]="marka">{{marka}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Szín</mat-label>
+            <mat-select [(value)]="newcar.color">
+              <mat-option *ngFor="let color of carcolors" [value]="color">{{color}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label> Évjárat</mat-label>
+            <mat-select [(value)]="newcar.manYear">
+              <mat-option *ngFor="let evjarat of caryears" [value]="evjarat">{{evjarat}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <form [formGroup]="rendszam">
+            <mat-form-field appearance="fill" >
+                <mat-label>Rendszám</mat-label>
+                <input placeholder="ex. ABC-123" matInput formControlName="nr">
+            </mat-form-field>
+            <div *ngIf="nr?.errors" style="color:red;">
+                Rendszám nem érvényes!
+            </div> 
+        </form>
+
+        <button mat-mini-fab color="green" id="add" [disabled]="errors() ? 'disabled': null" (click)="saveOrUpdate()">
+            <mat-icon>done</mat-icon>
+        </button>
+
+    </ng-container>
+</div>
