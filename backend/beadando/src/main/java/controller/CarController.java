@@ -80,6 +80,7 @@ public class CarController {
 
     }
 
+    // delete car with given ID
     @DeleteMapping("/cars/{id}")
     void deleteCar(@PathVariable Long id) {
         System.out.println("DELETE CALLED");
