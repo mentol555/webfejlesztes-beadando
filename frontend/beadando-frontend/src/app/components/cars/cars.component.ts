@@ -33,6 +33,7 @@ export class CarsComponent implements OnInit {
 
   getCars() {
     this.cars = []
+    this.showNotFoundMessage = false
     this.dataService.getCars().subscribe(values => this.setCars(values as Cars[]))
   }
 
@@ -68,7 +69,8 @@ export class CarsComponent implements OnInit {
 
   // the actual car to modify
   actualCar : Cars = {} as Cars
-
+  
+  // called when the edit button is clicked
   updateCar(car: Cars) {
     this.save = false
     this.actualCar = car
@@ -113,6 +115,26 @@ export class CarsComponent implements OnInit {
 
   deleteCar(id: string) {
     this.dataService.deleteCar(id).subscribe(response => this.getCars())
+  }
+
+  searchedID = null
+  showNotFoundMessage = false
+
+  searchOne() {
+    this.showNotFoundMessage = false
+    let id = this.searchedID
+    this.searchedID = null
+    this.dataService.getCarById(id + '')
+      .subscribe(
+        (response) => {
+          this.cars = []
+          this.cars.push(response as Cars)
+        },
+        (error) => {
+          this.showNotFoundMessage = true
+          this.cars = []
+        }
+      )
   }
 
 }

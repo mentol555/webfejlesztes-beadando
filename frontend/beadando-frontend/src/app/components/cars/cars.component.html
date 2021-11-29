@@ -1,4 +1,19 @@
 <div class="container">
+    
+    <div class="searchOne">
+        <p style="font-size: large;">Keresés azonosító alapján</p>
+        <mat-form-field appearance="fill" id="searchOne">
+            <mat-label>Azonosító</mat-label>
+            <input placeholder="ex. 1" matInput type="number" [(ngModel)]="searchedID">
+        </mat-form-field>
+        <button mat-mini-fab color="green" (click)="searchOne()" [disabled]="!searchedID ? 'disabled': null">
+            <mat-icon>done</mat-icon>
+        </button>
+        <p style="font-size: large; color: red; margin-top: 10px;" *ngIf="showNotFoundMessage">A keresett azonosító nem található!</p>
+    </div>
+
+    <button style="margin: 20px 20px 0 20px;" mat-stroked-button (click)="getCars()">Összes lekérése</button>
+
     <table>
         <tr>
             <th>ID</th>

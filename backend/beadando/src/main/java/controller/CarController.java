@@ -1,15 +1,12 @@
 package controller;
 
-import com.mkyong.error.CarNotFoundException;
 import model.Car;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import repo.CarRepository;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("api/")
@@ -61,7 +58,7 @@ public class CarController {
                 });
     }
 
-    // update author only
+    // update manufacturer(name) only
     @PatchMapping("/cars/{id}")
     Car patch(@RequestBody String updatedName, @PathVariable Long id) {
         System.out.println("PATCH CALLED");

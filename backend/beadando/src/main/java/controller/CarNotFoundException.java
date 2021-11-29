@@ -1,4 +1,4 @@
-package com.mkyong.error;
+package controller;
 
 public class CarNotFoundException extends RuntimeException {
 

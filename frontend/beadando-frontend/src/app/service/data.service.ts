@@ -15,6 +15,10 @@ export class DataService {
     return this.http.get(this.baseUrl)
   }
 
+  getCarById(id: string) {
+    return this.http.get(this.baseUrl + '/' + id)
+  }
+
   addCar(newcar: any) {
     return this.http.post(this.baseUrl, newcar)
   }
