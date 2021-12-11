@@ -9,7 +9,7 @@ import webfejlesztes.beadando.repo.CarRepository;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("api/")
 @CrossOrigin(origins = "http://localhost:4200")
 public class CarController {
 
@@ -17,7 +17,7 @@ public class CarController {
     private CarRepository carRepository;
 
     // get cars
-    @GetMapping("/cars")
+    @GetMapping("cars")
     public List<Car> getCars(){
         System.out.println("GET CALLED");
         return carRepository.findAll();
