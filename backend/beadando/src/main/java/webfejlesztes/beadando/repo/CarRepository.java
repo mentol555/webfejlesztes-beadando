@@ -1,6 +1,6 @@
-package repo;
+package webfejlesztes.beadando.repo;
 
-import model.Car;
+import webfejlesztes.beadando.model.Car;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package model;
+package webfejlesztes.beadando.model;
 
 import javax.persistence.*;
 

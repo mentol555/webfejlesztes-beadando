@@ -1,4 +1,4 @@
-package controller;
+package webfejlesztes.beadando.controller;
 
 public class CarNotFoundException extends RuntimeException {
 

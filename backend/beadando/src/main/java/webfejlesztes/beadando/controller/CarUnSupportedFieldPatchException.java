@@ -1,4 +1,4 @@
-package controller;
+package webfejlesztes.beadando.controller;
 
 public class CarUnSupportedFieldPatchException extends RuntimeException {
 
